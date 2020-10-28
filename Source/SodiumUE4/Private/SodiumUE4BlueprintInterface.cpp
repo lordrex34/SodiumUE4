@@ -1,7 +1,7 @@
 #include "SodiumUE4PrivatePCH.h"
 #include "../Public/SodiumUE4BlueprintInterface.h"
 #include "SodiumUE4.h"
-#include "Base64.h"
+#include "Misc/Base64.h"
 #include <string> 
 
 USodiumUE4PluginBPLibrary::USodiumUE4PluginBPLibrary(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer){
@@ -137,7 +137,7 @@ void USodiumUE4PluginBPLibrary::EncryptSymmetric(TArray<uint8> data, TArray<uint
 	}
 
 	auto sodium = FSodiumUE4Module::Get();
-	success = sodium.EncryptSymmetric(encrypted, data, nonce, key);
+	success = sodium.EncryptSymmetric(encrypted, data, nonce, key) == 0 ? true : false;
 }
 
 void USodiumUE4PluginBPLibrary::DecryptSymmetric(TArray<uint8> encrypted, TArray<uint8> key, TArray<uint8> nonce, TArray<uint8>& decrypted, bool& success) {
@@ -147,7 +147,7 @@ void USodiumUE4PluginBPLibrary::DecryptSymmetric(TArray<uint8> encrypted, TArray
 	}
 
 	auto sodium = FSodiumUE4Module::Get();
-	success = sodium.DecryptSymmetric(decrypted, encrypted, nonce, key);
+	success = sodium.DecryptSymmetric(decrypted, encrypted, nonce, key) == 0 ? true : false;
 }
 
 TArray<uint8> USodiumUE4PluginBPLibrary::GenerateKey() {

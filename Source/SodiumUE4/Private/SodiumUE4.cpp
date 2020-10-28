@@ -4,7 +4,7 @@
 
 #include "SodiumUE4PrivatePCH.h"
 #include "Core.h"
-#include "ModuleManager.h"
+#include "Modules/ModuleManager.h"
 #include "Interfaces/IPluginManager.h"
 
 

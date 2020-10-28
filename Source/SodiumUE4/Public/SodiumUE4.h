@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ModuleManager.h"
-#include "../ThirdParty/libsodium/src/libsodium/include/sodium.h"
+#include "Modules/ModuleManager.h"
+#include "../../ThirdParty/libsodium/src/libsodium/include/sodium.h"
 
 class FSodiumUE4Module : public IModuleInterface
 {
