@@ -83,7 +83,7 @@ int FSodiumUE4Module::EncryptSymmetric(TArray<uint8>& encrypted, TArray<uint8>& 
 }
 
 int FSodiumUE4Module::DecryptSymmetric(TArray<uint8>& decrypted, TArray<uint8>& encrypted, TArray<uint8>& nonce, TArray<uint8>& key) {
-	encrypted.SetNum(decrypted.Num() - crypto_secretbox_MACBYTES);
+	decrypted.SetNum(encrypted.Num() - crypto_secretbox_MACBYTES);
 	return crypto_secretbox_open_easy(decrypted.GetData(), encrypted.GetData(), encrypted.Num(), nonce.GetData(), key.GetData());
 }
 
